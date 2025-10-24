@@ -6,7 +6,6 @@
 
     <display-name>FirstServlet</display-name>
 
-    <!-- HelloServlet is declared via annotation, but we provide web.xml for completeness -->
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
         <servlet-class>com.example.HelloServlet</servlet-class>
@@ -17,7 +16,6 @@
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
-    <!-- Map all paths under the webapp to HelloServlet so /FirstServlet/* works -->
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
         <url-pattern>/*</url-pattern>
