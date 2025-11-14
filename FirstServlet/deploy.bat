@@ -8,6 +8,7 @@ set "TOMCAT_HOME=C:\xampp\tomcat"
 
 set "APP_NAME=FirstServlet"
 set "TARGET_JAR=target\FirstServlet-1.0-SNAPSHOT.jar"
+set "TARGET_WAR=target\FirstServlet-1.0-SNAPSHOT.war"
 
 if not exist "%TARGET_JAR%" (
     echo JAR not found: %TARGET_JAR%
@@ -47,3 +48,6 @@ if %ERRORLEVEL% EQU 0 (
     echo Failed to copy jar. Error code %ERRORLEVEL%
     exit /b %ERRORLEVEL%
 )
+
+echo Copying %TARGET_WAR% to %DEST_DIR%...
+copy /Y "%TARGET_WAR%" "%DEST_DIR%\%APP_NAME%.war" > nul
