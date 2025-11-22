@@ -16,4 +16,12 @@ public class EtudiantController {
         modelView.addObject("etudiants", etudiants);
         return modelView;
     }
+
+    @HandleURL("/etudiant/1")
+    public ModelView getEtudiant15() {
+        Etudiant etudiant = Etudiant.readById(1);
+        ModelView modelView = new ModelView("etudiant/detail.jsp");
+        modelView.addObject("etudiant", etudiant);
+        return modelView;
+    }
 }

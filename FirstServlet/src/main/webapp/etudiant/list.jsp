@@ -152,27 +152,29 @@
             <table>
                 <thead>
                     <tr>
-                        <th>N Matricule</th>
+                        <th>ID</th>
+                        <th>N° Etudiant</th>
                         <th>Nom</th>
                         <th>Prenom</th>
                         <th>Email</th>
-                        <th>Niveau</th>
+                        <th>Promotion</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach var="etudiant" items="${etudiants}">
                         <tr>
-                            <td><strong>${etudiant.matricule}</strong></td>
+                            <td><strong>${etudiant.id}</strong></td>
+                            <td>${etudiant.numeroEtudiant}</td>
                             <td>${etudiant.nom}</td>
                             <td>${etudiant.prenom}</td>
                             <td>${etudiant.email}</td>
-                            <td>${etudiant.niveau}</td>
+                            <td>${etudiant.promotion}</td>
                             <td>
                                 <div class="actions">
-                                    <a href="<c:url value='/FirstServlet/etudiant/view/${etudiant.matricule}'/>" class="btn btn-edit">Voir</a>
-                                    <a href="<c:url value='/FirstServlet/etudiant/edit/${etudiant.matricule}'/>" class="btn btn-edit">Editer</a>
-                                    <a href="<c:url value='/FirstServlet/etudiant/delete/${etudiant.matricule}'/>" class="btn btn-danger" onclick="return confirm('Etes-vous sur ?');">Supprimer</a>
+                                    <a href="<c:url value='/etudiant/15'/>" class="btn btn-edit">Voir</a>
+                                    <a href="<c:url value='/etudiant/edit/${etudiant.id}'/>" class="btn btn-edit">Editer</a>
+                                    <a href="<c:url value='/etudiant/delete/${etudiant.id}'/>" class="btn btn-danger" onclick="return confirm('Etes-vous sur ?');">Supprimer</a>
                                 </div>
                             </td>
                         </tr>
