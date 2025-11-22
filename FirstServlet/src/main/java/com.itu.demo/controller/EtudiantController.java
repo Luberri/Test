@@ -1,7 +1,6 @@
 package com.itu.demo.controller;
 
-import com.itu.demo.annotations.HandleURL;
-import com.itu.demo.annotations.Controller;
+import com.itu.demo.annotations.*;
 import com.itu.demo.entity.Etudiant;
 import com.itu.demo.ModelView;
 import java.util.List;
@@ -27,6 +26,13 @@ public class EtudiantController {
 
     @HandleURL("/etudiant")
     public ModelView getEtudiant(int id) {
+        Etudiant etudiant = Etudiant.readById(id);
+        ModelView modelView = new ModelView("etudiant/detail.jsp");
+        modelView.addObject("etudiant", etudiant);
+        return modelView;
+    }
+    @HandleURL("/etudiantParam")
+    public ModelView getEtudiantParam(@Param("id") int id) {
         Etudiant etudiant = Etudiant.readById(id);
         ModelView modelView = new ModelView("etudiant/detail.jsp");
         modelView.addObject("etudiant", etudiant);

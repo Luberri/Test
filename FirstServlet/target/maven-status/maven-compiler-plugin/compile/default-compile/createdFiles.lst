@@ -1,4 +1,5 @@
 com\itu\demo\ModelView.class
+com\itu\demo\annotations\Param.class
 com\itu\demo\controller\EtudiantController.class
 com\itu\demo\FrontServlet$Mapping.class
 com\itu\demo\annotations\HandleURL.class
