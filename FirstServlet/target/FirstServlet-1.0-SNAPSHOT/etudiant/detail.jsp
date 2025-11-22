@@ -130,7 +130,7 @@
                 Etudiant non trouvé.
             </div>
             <div class="btn-container">
-                <a href="<c:url value='/FirstServlet/etudiant/list'/>" class="btn btn-secondary">Retour à la liste</a>
+                <a href="<c:url value='/etudiant/list'/>" class="btn btn-secondary">Retour à la liste</a>
             </div>
         </c:if>
         
@@ -176,9 +176,7 @@
             </div>
             
             <div class="btn-container">
-                <a href="<c:url value='/FirstServlet/etudiant/edit/${etudiant.id}'/>" class="btn btn-primary">Modifier</a>
-                <a href="<c:url value='/FirstServlet/etudiant/list'/>" class="btn btn-secondary">Retour</a>
-                <a href="<c:url value='/FirstServlet/etudiant/delete/${etudiant.id}'/>" class="btn btn-danger" onclick="return confirm('Etes-vous sur ?');">Supprimer</a>
+                <a href="<c:url value='/etudiant/list'/>" class="btn btn-secondary">Retour</a>
             </div>
         </c:if>
     </div>

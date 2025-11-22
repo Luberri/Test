@@ -139,7 +139,7 @@
         <h1>Liste des Etudiants</h1>
         
         <div class="btn-container">
-            <a href="<c:url value='/FirstServlet/etudiant/add'/>" class="btn">+ Ajouter un Etudiant</a>
+            <a href="<c:url value='/etudiant/add'/>" class="btn">+ Ajouter un Etudiant</a>
         </div>
         
         <c:if test="${empty etudiants}">
