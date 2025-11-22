@@ -38,4 +38,11 @@ public class EtudiantController {
         modelView.addObject("etudiant", etudiant);
         return modelView;
     }
+    @HandleURL("/etudiant/{id}")
+    public ModelView getEtudiantPattern(int id) {
+        Etudiant etudiant = Etudiant.readById(id);
+        ModelView modelView = new ModelView("etudiant/detail.jsp");
+        modelView.addObject("etudiant", etudiant);
+        return modelView;
+    }
 }
