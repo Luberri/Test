@@ -1,7 +1,5 @@
 CREATE DATABASE IF NOT EXISTS sprint;
-\c sprint;
-DROP TABLE IF EXISTS etudiant CASCADE;
-
+USE sprint;
 -- Création de la table etudiant
 CREATE TABLE etudiant (
     id SERIAL PRIMARY KEY,

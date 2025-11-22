@@ -1,2 +1,8 @@
-G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com\example\test\Test.java
-G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com\example\HelloServlet.java
+G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\FrontServlet.java
+G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\Scanner.java
+G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\annotations\Controller.java
+G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\annotations\HandleURL.java
+G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\ModelView.java
+G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\Conn.java
+G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\entity\Etudiant.java
+G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\controller\EtudiantController.java
