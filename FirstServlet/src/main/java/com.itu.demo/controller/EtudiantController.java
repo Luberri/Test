@@ -16,6 +16,7 @@ public class EtudiantController {
         return modelView;
     }
 
+
     @HandleURL("/etudiant/1")
     public ModelView getEtudiant15() {
         Etudiant etudiant = Etudiant.readById(1);
