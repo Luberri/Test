@@ -3,7 +3,7 @@ package com.itu.demo.entity;
 import com.itu.demo.Conn;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;  
 
 public class Etudiant {
     
@@ -117,7 +117,7 @@ public class Etudiant {
      * @return true si l'insertion est réussie, false sinon
      */
     public boolean create() {
-        String sql = "INSERT INTO etudiant (nom, prenom, email, date_naissance, numero_etudiant, promotion, date_inscription) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO etudiant (nom, prenom, email, date_naissance, numero_etudiant, promotion, date_inscription) VALUES (?, ?, ?, ?, ?, ?, now())";
         Connection conn = null;
         try {
             conn = Conn.getConnection();
@@ -128,7 +128,6 @@ public class Etudiant {
             pst.setString(4, this.dateNaissance);
             pst.setString(5, this.numeroEtudiant);
             pst.setString(6, this.promotion);
-            pst.setString(7, this.dateInscription);
             pst.executeUpdate();
             pst.close();
             return true;

@@ -2,8 +2,10 @@ G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\FrontServlet.
 G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\Scanner.java
 G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\annotations\Param.java
 G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\annotations\Controller.java
+G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\annotations\Post.java
 G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\annotations\HandleURL.java
 G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\ModelView.java
 G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\Conn.java
 G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\entity\Etudiant.java
+G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\annotations\Get.java
 G:\S5\Framework-Naina\Test\FirstServlet\src\main\java\com.itu.demo\controller\EtudiantController.java

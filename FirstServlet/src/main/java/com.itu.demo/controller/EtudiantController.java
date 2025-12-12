@@ -8,7 +8,7 @@ import java.util.List;
 @Controller
 public class EtudiantController {
 
-    @HandleURL("/etudiant/list")
+    @Get("/etudiant/list")
     public ModelView listEtudiants() {
         List<Etudiant> etudiants = Etudiant.readAll();
         ModelView modelView = new ModelView("etudiant/list.jsp");
@@ -16,31 +16,36 @@ public class EtudiantController {
         return modelView;
     }
 
-
-    @HandleURL("/etudiant/1")
-    public ModelView getEtudiant15() {
-        Etudiant etudiant = Etudiant.readById(1);
-        ModelView modelView = new ModelView("etudiant/detail.jsp");
-        modelView.addObject("etudiant", etudiant);
+    @Get("/etudiant/ajouter")
+    public ModelView afficherFormulaire() {
+        ModelView modelView = new ModelView("etudiant/form.jsp");
         return modelView;
     }
 
-    @HandleURL("/etudiant")
+    @Post("/etudiant/ajouter")
+    public ModelView ajouterEtudiant(
+            @Param("nom") String nom, 
+            @Param("prenom") String prenom, 
+            @Param("mail") String mail,
+            @Param("dateNaissance") String dateNaissance,
+            @Param("numeroEtudiant") String numeroEtudiant,
+            @Param("promotion") String promotion) {
+        
+        Etudiant etudiant = new Etudiant();
+        etudiant.setNom(nom);
+        etudiant.setPrenom(prenom);
+        etudiant.setEmail(mail);
+        etudiant.setDateNaissance(dateNaissance);
+        etudiant.setNumeroEtudiant(numeroEtudiant);
+        etudiant.setPromotion(promotion);
+        etudiant.create();
+        
+        ModelView modelView = new ModelView("redirect:/etudiant/list");
+        return modelView;
+    }
+
+    @Get("/etudiant/{id}")
     public ModelView getEtudiant(int id) {
-        Etudiant etudiant = Etudiant.readById(id);
-        ModelView modelView = new ModelView("etudiant/detail.jsp");
-        modelView.addObject("etudiant", etudiant);
-        return modelView;
-    }
-    @HandleURL("/etudiantParam")
-    public ModelView getEtudiantParam(@Param("id") int id) {
-        Etudiant etudiant = Etudiant.readById(id);
-        ModelView modelView = new ModelView("etudiant/detail.jsp");
-        modelView.addObject("etudiant", etudiant);
-        return modelView;
-    }
-    @HandleURL("/etudiant/{id}")
-    public ModelView getEtudiantPattern(int id) {
         Etudiant etudiant = Etudiant.readById(id);
         ModelView modelView = new ModelView("etudiant/detail.jsp");
         modelView.addObject("etudiant", etudiant);
