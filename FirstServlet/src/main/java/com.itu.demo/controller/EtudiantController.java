@@ -1,5 +1,6 @@
 package com.itu.demo.controller;
 
+import com.itu.demo.ApiResponse;
 import com.itu.demo.annotations.*;
 import com.itu.demo.entity.Etudiant;
 import com.itu.demo.ModelView;
@@ -84,5 +85,40 @@ public class EtudiantController {
         ModelView modelView = new ModelView("redirect:/etudiant/list");
         modelView.addObject("error", "Étudiant non trouvé");
         return modelView;
+    }
+
+    @Get("/api/etudiant/list")
+    @RestApi
+    public ApiResponse apiListEtudiants() {
+        List<Etudiant> etudiants = Etudiant.readAll();
+        return ApiResponse.success(etudiants);
+    }
+
+    @Get("/api/etudiant/{id}")
+    @RestApi
+    public ApiResponse apiGetEtudiant(int id) {
+        Etudiant etudiant = Etudiant.readById(id);
+        if (etudiant == null) {
+            return ApiResponse.error("Étudiant non trouvé");
+        }
+        return ApiResponse.success(etudiant);
+    }
+
+    @Post("/api/etudiant/ajouter")
+    @RestApi
+    public ApiResponse apiAjouterEtudiant(Map<String, Object> params) {
+        Etudiant etudiant = new Etudiant();
+        etudiant.setNom((String) params.get("nom"));
+        etudiant.setPrenom((String) params.get("prenom"));
+        etudiant.setEmail((String) params.get("mail"));
+        etudiant.setDateNaissance((String) params.get("dateNaissance"));
+        etudiant.setNumeroEtudiant((String) params.get("numeroEtudiant"));
+        etudiant.setPromotion((String) params.get("promotion"));
+        
+        boolean success = etudiant.create();
+        if (success) {
+            return ApiResponse.success(etudiant);
+        }
+        return ApiResponse.error("Erreur lors de l'ajout");
     }
 }
