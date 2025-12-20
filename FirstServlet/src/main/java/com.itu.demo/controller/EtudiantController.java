@@ -4,6 +4,10 @@ import com.itu.demo.ApiResponse;
 import com.itu.demo.annotations.*;
 import com.itu.demo.entity.Etudiant;
 import com.itu.demo.ModelView;
+import com.itu.demo.UploadedFile;
+
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -120,5 +124,79 @@ public class EtudiantController {
             return ApiResponse.success(etudiant);
         }
         return ApiResponse.error("Erreur lors de l'ajout");
+    }
+
+    // Version avec 2 Maps : données + fichiers
+    @Post("/etudiant/ajouter-avec-photo")
+    public ModelView ajouterEtudiantAvecPhoto(
+            Map<String, Object> params,
+            @Param("files") Map<String, UploadedFile> files) {
+        
+        Etudiant etudiant = new Etudiant();
+        etudiant.setNom((String) params.get("nom"));
+        etudiant.setPrenom((String) params.get("prenom"));
+        etudiant.setEmail((String) params.get("mail"));
+        
+        // Récupérer le fichier uploadé
+        UploadedFile photo = files.get("photo");
+        if (photo != null) {
+            // Sauvegarder le fichier
+            String uploadPath = "uploads/" + photo.getFileName();
+            saveFile(photo.getContent(), uploadPath);
+            // etudiant.setPhotoPath(uploadPath);
+        }
+        
+        boolean success = etudiant.create();
+        
+        ModelView modelView = new ModelView("redirect:/etudiant/list");
+        modelView.addObject("message", success ? "Étudiant ajouté" : "Erreur");
+        return modelView;
+    }
+
+    // Version avec UploadedFile directement
+    @Post("/etudiant/upload-document")
+    public ModelView uploadDocument(
+            @Param("id") int id,
+            @Param("document") UploadedFile document) {
+        
+        if (document != null) {
+            String fileName = document.getFileName();
+            byte[] content = document.getContent();
+            String type = document.getContentType();
+            
+            // Traitement du fichier...
+            System.out.println("Fichier reçu: " + fileName + " (" + content.length + " bytes)");
+        }
+        
+        return new ModelView("redirect:/etudiant/" + id);
+    }
+
+    // API REST avec upload
+    @Post("/api/etudiant/upload")
+    @RestApi
+    public ApiResponse apiUploadDocument(
+            Map<String, Object> params,
+            @Param("files") Map<String, UploadedFile> files) {
+        
+        UploadedFile file = files.get("document");
+        if (file == null) {
+            return ApiResponse.error("Aucun fichier reçu");
+        }
+        
+        Map<String, Object> result = new HashMap<>();
+        result.put("fileName", file.getFileName());
+        result.put("size", file.getSize());
+        result.put("contentType", file.getContentType());
+        
+        return ApiResponse.success(result);
+    }
+
+    private void saveFile(byte[] content, String path) {
+        // Implémentation de la sauvegarde
+        try (java.io.FileOutputStream fos = new java.io.FileOutputStream(path)) {
+            fos.write(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

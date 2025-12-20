@@ -6,6 +6,7 @@ com\itu\demo\annotations\HandleURL.class
 com\itu\demo\ApiResponse.class
 com\itu\demo\annotations\Controller.class
 com\itu\demo\Scanner.class
+com\itu\demo\UploadedFile.class
 com\itu\demo\Conn.class
 com\itu\demo\ModelView.class
 com\itu\demo\annotations\Param.class
